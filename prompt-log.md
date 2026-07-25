@@ -17,3 +17,21 @@ years of experience instead of vague descriptions.
 Edits: [Fed the AI my actual resume as source material, then adjusted the 
 wording in the draft to sound more like how I'd actually phrase things 
 rather than keeping it as generic AI phrasing.]
+
+## 2026-07-24 — Phase 1 memo draft
+Prompt: I asked Claude to help draft a 300-400 word executive memo on an 
+FX receivable exposure, covering the exposure, risk, three hedge families, 
+and next steps, using the course's example scenario since I couldn't 
+locate my individually-assigned scenario. I then asked Claude to revise it 
+so it read like my own executive judgment rather than a generic AI 
+summary.
+Result: Claude's first draft covered the required content but read as a 
+neutral report rather than a decision. The revision cut the generic closer, 
+added first-person ownership language ("I want to see these three side by 
+side," "I'd rather hand you a number I've stress-tested"), and rewrote the 
+hedge-option descriptions with more natural, decisive phrasing instead of 
+a flat, evenly-weighted list.
+Edits: [I reviewed both versions and picked the phrasing that actually 
+sounded like something I'd say to a CFO. I revised the closing statement from a generic summary sentence to 
+a specific statement of my own approach and reasoning, better reflecting 
+executive-level judgment rather than a reported conclusion.]

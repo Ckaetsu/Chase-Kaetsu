@@ -13,11 +13,11 @@ date: 2026-07-24
 
 ## The Exposure
 
-We're set to receive EUR 4,500,000 in one year. The euro amount is fixed. What it converts to in dollars is not, and that's the whole problem. At EURUSD 1.10, we collect $4,950,000. At 1.00, it's $4,500,000 — a $450,000 gap on a move that's well within a normal year for this currency pair.
+We're set to receive EUR 4,500,000 in one year. The euro amount is fixed. What it converts to in dollars is not, and that's the whole problem. At EURUSD 1.10, we collect $4,950,000. At 1.00, it's $4,500,000 — a $450,000 gap on a move that's well within a normal year for this currency pair. A swing that size isn't a rounding error against our budget for this receivable; it's the difference between hitting our number and missing it.
 
 ## Why It's Risky
 
-We have no natural offset for this exposure anywhere else in the business. If the euro weakens before settlement, the loss lands directly on this receivable, in full.
+We have no natural offset for this exposure anywhere else in the business. If the euro weakens before settlement, the loss lands directly on this receivable, in full. We're not positioned to absorb that kind of variance without it showing up in our results.
 
 ## Hedge Options
 
@@ -29,4 +29,6 @@ The third option, a put option, is the only one that keeps upside intact. We pay
 
 ## Next Steps
 
-Before recommending one of these, I want to see them modeled side by side. That means specifying the model, building it with AI assistance and auditing every formula myself, replacing placeholder rates with live-sourced data, and running an independent validation pass. I'd rather bring you a recommendation that's been tested than one that hasn't.
+Before recommending one of these, I want to see them modeled side by side, not argued in the abstract. That means specifying the model in detail, building it with AI assistance and auditing every formula myself, replacing placeholder rates with live sourced data, and running an independent validation pass before I bring you a number. Each step produces something you can review — this isn't a black box.
+
+I'd like your go-ahead to move forward on the model spec. I'll have a recommendation, backed by a working model, ready by the time the receivable is closer to settlement.

@@ -13,26 +13,20 @@ date: 2026-07-24
 
 ## The Exposure
 
-We're set to receive EUR 4,500,000 in one year. That euro figure is locked in — what it's worth in dollars is not. At EURUSD 1.10, we collect $4,950,000. At 1.00, it's $4,500,000. That's a $450,000 gap, and a 9% move like that isn't a stretch — it's a normal year for this currency pair. Right now, our USD budget for this receivable isn't really a number. It's a range, and a wide one.
+We're set to receive EUR 4,500,000 in one year. The euro amount is fixed. What it converts to in dollars is not, and that's the whole problem. At EURUSD 1.10, we collect $4,950,000. At 1.00, it's $4,500,000 — a $450,000 gap on a move that's well within a normal year for this currency pair.
 
 ## Why It's Risky
 
-If the euro weakens before settlement, that loss comes straight off our proceeds. We have nothing elsewhere in the business offsetting this exposure, so whatever happens to EURUSD between now and settlement hits this line directly.
+We have no natural offset for this exposure anywhere else in the business. If the euro weakens before settlement, the loss lands directly on this receivable, in full.
 
 ## Hedge Options
 
-**Forward contract** — lock today's rate for delivery in a year. Certainty, full stop. The tradeoff: if the euro strengthens instead, we don't get to benefit from it.
+A forward contract locks in today's rate for delivery in a year. It removes the uncertainty completely — the only cost is giving up any benefit if the euro moves in our favor instead.
 
-**Money-market hedge** — borrow EUR now, convert at today's spot rate, invest the dollars until settlement. Gets us to the same place as a forward, just built out of our own borrowing capacity instead of a bank's forward book. Worth a look if forward pricing isn't attractive, though it does tie up credit lines we might want elsewhere.
+A money-market hedge gets us to the same outcome through a different mechanism: borrow EUR now, convert to dollars at today's spot rate, and invest the proceeds until settlement. It's worth considering if forward pricing isn't attractive, though it draws on credit lines we may need for other purposes.
 
-**Put option** — pay a premium for the right, not the obligation, to sell EUR at a set rate. This is the only one of the three that keeps upside if the euro strengthens. The cost is the premium, paid whether we end up needing the protection or not.
+The third option, a put option, is the only one that keeps upside intact. We pay a premium for the right, not the obligation, to sell EUR at a set rate. If the euro strengthens, we participate in that gain; if it weakens, we're protected. The premium is paid either way.
 
 ## Next Steps
 
-I want to see these three side by side before recommending one. My plan:
-1. Spec out the model — exact inputs, exact calculation logic
-2. Build it with AI assistance, then audit every formula myself
-3. Swap in live, sourced market data for the placeholder rates
-4. Run an independent validation pass and bring you a final recommendation
-
-I'd rather hand you a number I've stress-tested than a guess dressed up as one.
+Before recommending one of these, I want to see them modeled side by side. That means specifying the model, building it with AI assistance and auditing every formula myself, replacing placeholder rates with live-sourced data, and running an independent validation pass. I'd rather bring you a recommendation that's been tested than one that hasn't.

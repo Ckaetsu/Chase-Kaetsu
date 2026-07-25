@@ -35,3 +35,17 @@ Edits: [I reviewed both versions and picked the phrasing that actually
 sounded like something I'd say to a CFO. I revised the closing statement from a generic summary sentence to 
 a specific statement of my own approach and reasoning, better reflecting 
 executive-level judgment rather than a reported conclusion.]
+
+## 2026-07-24 — Phase 1 memo expansion
+Prompt: I asked Claude to expand the memo to meet the 300-400 word 
+requirement and be more in-depth with explanations, since the initial 
+draft was under the word count and light on business consequences and a 
+clear ask.
+Result: Claude added a sentence connecting the $450K exposure to actual 
+budget impact, made the risk consequence more concrete by tying it to how 
+it would show up in results rather than just stating the mechanic, and 
+added a closing request for CFO sign-off so the memo ends with a decision 
+point instead of trailing off after the process overview.
+Edits: [I reviewed the additions for tone consistency with the rest of the 
+memo and made sure the new closing ask read as a direct request rather 
+than a vague suggestion.]

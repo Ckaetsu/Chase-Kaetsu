@@ -98,6 +98,7 @@ S_T is varied from 0.95×S0_in to 1.05×S0_in in 1% increments (11 points total,
 
 - **Parity check:** |F_implied − F0_in| must be within $0.001 (rounding tolerance); a larger gap indicates a formula error in the money-market steps.
 - **Forward proceeds** must be a flat, constant value across every row of the sensitivity table (it does not depend on S_T).
+- **Continuity at the strike:** Proceeds_Put must transition smoothly through S_T = K_PUT with no jump or gap — at S_T exactly equal to K_PUT, the floor payoff and the market-rate payoff must produce the same value before the premium is subtracted.
 - **Put proceeds** must never fall below FC_AMT × K_PUT − FC_AMT × PREM_PUT (the floor must hold at every S_T value).
 - **No error cells** (#REF!, #DIV/0!, #N/A) anywhere in the workbook.
 - **Every output cell must be a formula**, not a hardcoded number — outputs should update automatically if any input changes.

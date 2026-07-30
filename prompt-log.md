@@ -49,3 +49,19 @@ point instead of trailing off after the process overview.
 Edits: [I reviewed the additions for tone consistency with the rest of the 
 memo and made sure the new closing ask read as a direct request rather 
 than a vague suggestion.]
+
+## 2026-07-30 — Phase 2 model spec draft
+Prompt: I asked Claude to draft a full 8-section model specification for 
+an FX hedging workbook, using the exact named ranges required (FC_AMT, 
+S0_in, F0_in, R_USD, R_FC, K_PUT, K_CALL, PREM_PUT, PREM_CALL, T_DAYS), 
+based on my Phase 1 memo's EUR 4,500,000 receivable scenario.
+Result: Claude's first draft set F0_in independently of the interest rate 
+inputs, which meant the parity check in Section 7 would fail — F_implied 
+computed to roughly 1.1034 while the drafted F0_in was 1.0850, a gap far 
+outside rounding tolerance.
+Edits: [I caught this and had Claude recompute F0_in directly from the 
+parity formula given R_USD, R_FC, S0_in, and T_DAYS, so the placeholder 
+forward rate is internally consistent with the other placeholder inputs. 
+A spec whose own numbers fail its own validation rule would produce a 
+workbook that can't pass its own audit checklist before any real data is 
+even added.]

@@ -65,3 +65,16 @@ forward rate is internally consistent with the other placeholder inputs.
 A spec whose own numbers fail its own validation rule would produce a 
 workbook that can't pass its own audit checklist before any real data is 
 even added.]
+
+## 2026-07-30 — Phase 2 spec: validation rules review
+Prompt: I asked Claude to check the Section 7 validation rules against the 
+Stage 2 instructions to confirm all four required check types were 
+present (forward ≈ MM parity, continuous option proceeds, no error cells, 
+every output a formula).
+Result: Claude found that the draft only covered three of the four 
+required checks and was missing a continuity check confirming the option 
+payoff transitions smoothly at the strike price, with no jump between the 
+floor payoff and the market-rate payoff.
+Edits: [I added a continuity check confirming Proceeds_Put transitions 
+smoothly through S_T = K_PUT, so the validation section now matches all 
+four checks the instructions specify.]

@@ -1,4 +1,3 @@
-<!-- PR TARGET: https://github.com/Ckaetsu/Chase-Kaetsu  |  Stage 2 (100)  |  collaborator: yes -->
 # Stage 2 review — EUR receivable · Treasury sign-off
 
 Chase — I read your specification the way Treasury actually reads one: the spec is the contract the build must honor, so I checked whether an analyst could hand this to a modeler (or an AI) and get back the workbook you intended, with the exposure pointed the right way. It holds up. You are receiving EUR 4,500,000 in 365 days, so the firm is hurt if the euro *weakens* against the dollar — and every hedge in your flow defends that direction correctly.

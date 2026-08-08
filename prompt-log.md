@@ -108,3 +108,34 @@ clean at 0 errors across all 86 formulas. I reviewed the audit note
 findings against what was actually tested and confirmed each one traces 
 to a real check I could verify myself rather than a generic pass/fail 
 statement.
+
+## 2026-08-08 — Phase 4 market data retrieval and population
+Prompt: I asked Claude to retrieve live market data to replace the Stage 2 
+placeholder inputs — EURUSD spot, 1-year USD and EUR interest rates, and a 
+1-year forward rate — document the source and timestamp for each, then 
+populate the Stage 3 workbook through the named-range input cells and 
+confirm it still recalculates cleanly.
+
+Result: Claude retrieved a live spot (Bloomberg, 1.1561), a live 1-year 
+Treasury yield (Treasury.gov, 4.06%), and a live ECB deposit facility rate 
+(2.25%). No live 1-year EURUSD forward quote was accessible through free 
+sources, so Claude computed the CIP-implied forward per the Stage 4 
+instructions (1.1768) and documented that explicitly rather than 
+substituting an unsourced number. Claude also flagged that this forward 
+is 6.65% higher than the Stage 2 placeholder (1.1034), and traced that 
+gap mostly to the spot move rather than the interest-rate differential.
+
+Result (continued): After populating the workbook, it recalculated clean 
+(86 formulas, 0 errors) with no structural fixes needed — the Stage 3 
+build's formula-only construction meant live data flowed through every 
+tab correctly on the first population. The parity check passed, and the 
+sensitivity table recalculated around the new live spot.
+
+Edits: I noted that Claude's "FX Hedging Lab cross-check" was done by 
+independently recomputing the Lab's documented formulas by hand with the 
+live inputs, not by actually entering the numbers into the Lab's 
+interactive web tool, since Claude can't click into it directly. Claude 
+flagged this limitation itself rather than implying it had used the tool. 
+I plan to also run the live inputs through the actual Lab page myself to 
+confirm the match firsthand before treating the cross-check as fully 
+complete.

@@ -78,3 +78,33 @@ floor payoff and the market-rate payoff.
 Edits: [I added a continuity check confirming Proceeds_Put transitions 
 smoothly through S_T = K_PUT, so the validation section now matches all 
 four checks the instructions specify.]
+
+## 2026-08-08 — Phase 3 model build and audit
+Prompt: I asked Claude to generate the actual Excel workbook from my 
+committed Stage 2 spec, following the build contract exactly: all ten 
+named ranges attached to the right cells, formulas only (no pasted 
+values), a cover page and Legend/Key tab with the color convention, all 
+three hedge families, a formula-driven ±5% sensitivity table with chart, 
+and the spec's validation checks computed live in the workbook.
+
+Result: Claude built the workbook and ran it through a recalculation 
+check. The first pass flagged a #DIV/0! error, which on inspection turned 
+out to be a false positive — a text cell describing the "no error cells" 
+validation rule literally contained the string "#DIV/0!" as an example, 
+which tripped the mechanical error scanner even though no formula was 
+actually broken.
+
+Claude also ran a live test I asked for: changing S0_in in a test copy of 
+the workbook to confirm the sensitivity table and parity check actually 
+respond to input changes rather than being hardcoded. The Money Market 
+proceeds, F_implied, every sensitivity row, and the put proceeds all 
+updated correctly, and the Parity_Check_Result cell correctly flipped from 
+PASS to FAIL once the inputs were made inconsistent — confirming the check 
+is live, not decorative.
+
+Edits: I had Claude reword the "no error cells" description to avoid the 
+literal error-string pattern, then rerun recalculation, which came back 
+clean at 0 errors across all 86 formulas. I reviewed the audit note 
+findings against what was actually tested and confirmed each one traces 
+to a real check I could verify myself rather than a generic pass/fail 
+statement.

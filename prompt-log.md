@@ -161,3 +161,26 @@ rule.
 
 Edits: I used this rate-basis gap as the basis for my Part 4 retrospective 
 and the spec revisions I proposed there.
+
+## 2026-08-14 — Stage 4 review: R_FC tenor mismatch correction
+Prompt: My professor's Stage 4 review flagged that I'd sourced R_FC from 
+the ECB deposit facility rate — an overnight policy rate — while T_DAYS 
+was tenor-matched to 365 days and R_USD was correctly a 1-year Treasury 
+yield. I asked Claude to find a tenor-matched euro-area 1-year rate, 
+recompute F0_in and downstream proceeds, and quantify the dollar impact.
+
+Result: Claude sourced the Eurostat/ECB euro area 1-year government bond 
+yield (2.01%, most recent published reading, Dec 2025) as a tenor-matched 
+replacement for the 2.25% overnight rate. Recomputed F0_in via CIP with 
+the corrected rate (1.1768 → 1.1796) and re-ran the workbook: Proceeds_MM 
+and Proceeds_Forward both increased by $12,629.06, which lined up closely 
+with my professor's own estimate of ~$12,600 for a comparable basis 
+error — a good independent confirmation the fix was right, not just 
+plausible.
+
+Edits: I also had Claude trim an overclaim in my original market-data 
+memo, which said the passing parity check "confirms the parity 
+relationship holds with live data." Since F0_in was computed via CIP from 
+the same inputs the check evaluates, a pass only shows internal 
+consistency, not an independently observed market relationship — my 
+professor caught this and it's now corrected in an addendum to the memo.

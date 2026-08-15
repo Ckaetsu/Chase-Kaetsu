@@ -95,4 +95,12 @@ Matches workbook and LLM output exactly. ✓ (Below the strike, the floor holds 
 - The §7 validation rules should tighten the parity tolerance, or add a second, independent check (e.g., "recompute F_implied using both /360 and /365; if the two differ by more than $0.0002, confirm which basis was actually used upstream") — because this incident showed the existing tolerance is wide enough to pass a real, dollar-relevant error silently.
 - Future market-data memos (Stage 4-style documents) should restate the basis alongside each rate they report, not just alongside the original spec's inputs table, since the memo is often the document an independent reader relies on most directly for live numbers.
 
+## Retrospective Addendum — R_FC Tenor Mismatch (post-review)
+
+A second, independent gap surfaced after Treasury's Stage 4 review, separate from the rate-basis issue found in Part 1: I sourced R_FC from the ECB deposit facility rate — an overnight policy rate — while T_DAYS was tenor-matched to 365 days and R_USD was correctly a 1-year Treasury yield. I optimized for the wrong criterion: "freshest available rate" (the deposit facility is quoted daily) instead of "tenor-matched rate," and applied that inconsistently — the right standard on the dollar leg, the wrong one on the euro leg.
+
+This is a more expensive mistake than the T_DAYS/365 basis slip found earlier: it moved F0_in by $0.0028 (1.1768 → 1.1796) and shifted both Proceeds_Forward and Proceeds_MM by $12,629.06 on a $4.5M notional — real money, not a rounding artifact. It's also a subtler class of error than the basis slip: it doesn't produce an obviously wrong number, just a *plausible* one that happens to be built on a tenor mismatch nobody would catch without specifically checking each rate's maturity against the model's horizon.
+
+**What v2 of the spec would say differently:** Section 2's inputs table should require, for every rate input, an explicit statement of the instrument's own maturity alongside T_DAYS — not just a source and a value. A rule like "confirm the rate's stated maturity matches T_DAYS before accepting it as a Stage 4 substitute" would have caught this before it reached the workbook. "Freshest available" and "tenor-matched" can conflict, and the spec should say which one wins when they do.
+
 This is not a case of "the spec was perfect" — it produced a real, quantifiable, if modest, dollar error in an independent reader's hands, and the fix is specific and actionable rather than a vague call for "more detail."

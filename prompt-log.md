@@ -139,3 +139,25 @@ flagged this limitation itself rather than implying it had used the tool.
 I plan to also run the live inputs through the actual Lab page myself to 
 confirm the match firsthand before treating the cross-check as fully 
 complete.
+
+## 2026-08-13 — Phase 5 independent validation and recommendation
+Prompt: I asked Claude to simulate an independent "fresh LLM" execution of 
+my Stage 2 spec and Stage 4 market-data memo — computing all hedge 
+outcomes mechanically from only the values stated in those two documents, 
+then compare that output against my real workbook and diagnose any 
+discrepancies.
+
+Result: The simulated run matched the workbook exactly on the forward, 
+put, call, and unhedged outcomes. It diverged on the money-market hedge by 
+about $1,251 (roughly 0.02%), tracing to a rate-basis interpretation gap: 
+the spec states ACT/360 in its Assumptions section, but the value doesn't 
+get restated in the inputs table row or in the Stage 4 memo's per-row 
+source table, so an independent reader working primarily from the memo 
+could reasonably apply T_DAYS/365 instead. Notably, the workbook's parity 
+check would still return PASS even under that wrong basis, since the 
+resulting gap is smaller than the check's tolerance — meaning this 
+specific error wouldn't have been caught by the model's own validation 
+rule.
+
+Edits: I used this rate-basis gap as the basis for my Part 4 retrospective 
+and the spec revisions I proposed there.

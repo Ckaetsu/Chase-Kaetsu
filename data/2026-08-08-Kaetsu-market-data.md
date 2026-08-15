@@ -54,3 +54,20 @@ Since the Lab and the workbook implement the same named-range formulas from the 
 - Simple interest, ACT/360 day-count convention, per course standard.
 - No transaction costs or bid-ask spreads modeled.
 - Option premiums are scenario-given assumptions, not live market quotes (see table above).
+
+
+[market-data-addendum.md](https://github.com/user-attachments/files/31093557/market-data-addendum.md)
+
+## Addendum — R_FC Correction (post Stage 4 review)
+
+Treasury review flagged that R_FC (2.25%) was sourced from the ECB deposit facility rate — an **overnight** policy rate — while T_DAYS = 365 and R_USD were correctly tenor-matched to a 1-year instrument. This is a structural mismatch, not a rounding issue: it was optimized for "freshest available rate" rather than "tenor-matched rate."
+
+**Corrected R_FC:** 2.01% annual, ACT/360 — Eurostat / ECB euro area 1-year government bond yield curve (spot rate, 1-year maturity), most recent published reading as of December 2025 (source: Eurostat, cross-published via Trading Economics; series concept matches ECB Data Portal series `YC.B.U2.EUR.4F.G_N_A.SV_C_YM.SR_1Y`). This is tenor-matched to the 365-day settlement horizon, consistent with the standard applied to R_USD.
+
+**Recomputed F0_in:** 1.1796 (previously 1.1768), via F0 = S0_in × (1 + R_USD×T/360) / (1 + R_FC×T/360) with the corrected R_FC.
+
+**Dollar impact:** Proceeds_MM and Proceeds_Forward both shift up by **+$12,629.06** (from $5,295,600/$5,295,793 to $5,308,200/$5,308,422). This is close to Treasury's own estimate (~$12,600) of what a 25bp basis error would produce at this notional and tenor.
+
+**Correction to an earlier overclaim in this memo:** the original version of this memo stated that the parity check "confirms the parity relationship holds with live data." As Treasury correctly noted, that claim is stronger than the evidence supports — F0_in was computed via CIP from the same R_USD, R_FC, and S0_in used in the check itself, so a passing result is circular: it confirms internal consistency between the workbook's own inputs, not an independently observed market relationship. That circularity was already acknowledged in this memo's own post-population checks section, but the earlier restated claim contradicted it. Corrected here: the parity check shows the two legs of the model are internally consistent with each other, nothing more.
+
+The corrected workbook has been re-committed with the tenor-matched R_FC and recomputed F0_in. All downstream figures (sensitivity table, Options tab is unaffected since it doesn't use interest rates) reflect this correction.
